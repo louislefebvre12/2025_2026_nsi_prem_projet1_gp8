@@ -7,13 +7,25 @@
 # ajouter la meme somme au deuxieme client
 # noter la date du transfert et les détails dans l'historique
 
-def transfert_message ():
-    print "Bienvenue dans le transfert"
+def show_welcome_transfert_message ():
+    print (transfert_message_welcome)
+
+
+
+transfert_message_welcome = "Bienvenue dans votre page de transfert !"
+message_to_ask_the_amount_for_a_transfert = "Veuillez saisir le montant à transférer : "
+message_to_reask_the_amount_for_a_transfert = "Veuillez ressaisir s'il vous plaît le montant à transférer : "
+message_to_ask_the_amount_for_a_withdrawal = "Veuillez saisir le montant à retirer : "
+message_to_reask_the_amount_for_a_withdrawal = "Veuillez ressaisir s'il vous plaît le montant à retirer : "
+
+if client_enters_transfert_menu():
+    print transfert_welcome_message
+    else print not transfert_welcome_message
+
+if client_enters_amountpage():
+    print message_to_ask_the_amount_for_a_transfert
 
 
 
 
-while client_is_in_transfert_page ():
-    show transfert_message
-    ask_client1_select_client2 ()
-    
+montant_du_transfert = input("Veuillez entrer le montant du transfert")
