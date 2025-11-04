@@ -2,16 +2,19 @@
 
 
 def client_action() :
-    print("Tapez [1] pour vérifier votre solde" \
-          "Tapez [2] pour retirer un montant"\
-          "Tapez [3] pour déposer un montant"\
-          "Tapez [4] pour transférer un montant")
+    print("Tapez [1] pour Vérifier votre solde" \
+          "Tapez [2] pour Cosulter l'Historique"\
+          "Tapez [3] pour Déposer un montant"\
+          "Tapez [4] pour Retier un montant"
+          "Tapez [5] pour Transférer un montant"\
+          "Tapez [6] pour quitter le meilleur Atm")
 
 def client_authentification ():
     client_id = ask_for_client_id (client_id_message)
     while client_is_not_valid (client_id):
         client_id = ask_for_client_id (client_id_message)
     return client_id
+
 
 
 def home_menu() : 
