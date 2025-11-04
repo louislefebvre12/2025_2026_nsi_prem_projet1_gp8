@@ -1,0 +1,37 @@
+
+def client_is_not_quitting(chain) : 
+    return not (chain in quitting_words)
+
+def ask_for_client_id () : 
+    client_id = input(message_client_id)
+    return client_id 
+
+
+def re_ask_for_client_id () : 
+    ask_for_client_id()
+ 
+def show_home_menu() : 
+    print(home_menu)
+    choice = input("Choissez l'action")
+    return choice
+
+ def client_is_valid (client_id)
+    
+
+def client_id_not_valid (client_id)
+    return not (client_is_valid (client_id))
+    
+def check_client_id ():
+    client_id = ask_for_client_id()
+    while is_not_valid (client_id):
+        re_ask_client_id()
+
+show_welcome_message()
+
+def run_atm (client_id)
+    rep = "ne quittez pas"
+    while client_is_not_quitting(choice) :
+         check_client_id() 
+         choice = show_home_menu()
+         client_action = ask_for_client_action()
+    
