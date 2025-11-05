@@ -7,10 +7,6 @@
 # ajouter la meme somme au deuxieme client
 # noter la date du transfert et les détails dans l'historique
 
-def show_welcome_transfert_message ():
-    print (transfert_message_welcome)
-
-
 
 transfert_message_welcome = "Bienvenue dans votre page de transfert !"
 message_to_ask_the_amount_for_a_transfert = "Veuillez saisir le montant à transférer : "
@@ -18,14 +14,16 @@ message_to_reask_the_amount_for_a_transfert = "Veuillez ressaisir s'il vous plai
 message_to_ask_the_amount_for_a_withdrawal = "Veuillez saisir le montant à retirer : "
 message_to_reask_the_amount_for_a_withdrawal = "Veuillez ressaisir s'il vous plaît le montant à retirer : "
 
-if client_enters_transfert_menu():
-    print transfert_welcome_message
-    else print not transfert_welcome_message
-
-if client_enters_amountpage():
-    print message_to_ask_the_amount_for_a_transfert
+def transfert():
+    print("Bienvenue dans votre page de transfert !")
+    destinataire = input("Entrez l'ID du destinataire : ")
+    montant_str = input("Entrez le montant à transférer : ")
 
 
-
-
-montant_du_transfert = input("Veuillez entrer le montant du transfert")
+montant = float(montant_str)
+if montant <= 0:
+    print("Le montant doit être supérieur à 0.")
+else:
+    print(f"Le transfert de {montant:.2f} vers le compte de {destinataire} a été effectué avec succès !")
+print("Retour vers le menu principal...")
+   
