@@ -1,6 +1,9 @@
+clients = get_clients_base ()
 
-def client_is_not_quitting(chain) : 
-    return not (chain in quitting_words)
+def client_is_valid (client_id):
+    print ("Liste des clés : ", list (clients.keys ()))
+    return client_id in list (clients.keys ())
+
 
 def ask_for_client_id () : 
     client_id = input(message_client_id)
