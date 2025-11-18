@@ -49,12 +49,13 @@ message_depot_verif = f"Etes-vous sur de vouloir déposer cette somme: {montant_
 
 #clients
 
-client_001_id = 1 : { "nom" : "Kaltrachian"/
-                      "prenom" : "Bogdan" /
-                      "solde" : "346" / 
-                      "historique_depot" : "[206,"save_depot_in_historique"]" /
-                      "historique_retrait" :"[20,"save_withdraw_in_historique"]" /
-                      "historique_transfert" : "[34,id_client_recepteur,"save_transfert_in_historique"]"}
+client_001_id = { "nom" : "Kaltrachian", \
+                      'prenom' : 'Bogdan', \
+                      "solde" : "346", \
+                      "historique_depot" : "[206,"save_depot_in_historique"]" , \
+                      "historique_retrait" :"[20,"save_withdraw_in_historique"]", \
+                      "historique_transfert" : "[34,id_client_recepteur,"save_transfert_in_historique"]"
+}
 
 client_001_id = 2 : { "nom" : "Viara"/
                       "prenom" : "Axel" /
