@@ -122,8 +122,13 @@ print("Vérification du code PIN secret de l'utilisateur...")
 if authentification():
     solde_compte, solde_destinataire = transfert(solde_compte, solde_destinataire)
    
+def load_dico_from_json_file (file_name):
+    with open (file_name, "r") as f:
+        dico = json.load (f)
+    return dico
 
-
-
+def save_dico_in_json_file (file_name, dico):
+    with open (file_name, "w") as f:
+        json.dump (dico, f, indent=4)
 
 
