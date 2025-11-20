@@ -37,16 +37,6 @@ print(save_transfert_in_historique)
 
 
 
-
-
-
-#Pour depot:
-
-message_depot_verif = f"Etes-vous sur de vouloir déposer cette somme: {montant_depot}€ ? "
-
-
-
-
 #clients
 
 # client_001_id = { "nom" : "Kaltrachian", \

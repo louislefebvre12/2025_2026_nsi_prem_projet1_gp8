@@ -1,17 +1,4 @@
 
-# transfert :
-
-# entrer dans le transfert 
-# sélectionner le client à qui envoyer l'argent
-# sélectionner le montant à envoyer
-# afficher le message de verification de notre action
-# retirer la somme du compte du premier client
-# ajouter la meme somme au deuxieme client
-
-while client_is_in_transfert_page ():
-    show transfert_message
-    ask_client1_select_client2 ()
-    
 
     #retrait:
 #- choisisser un montant 
@@ -55,7 +42,7 @@ def add_amount_to_account ():
 def fonctionnement_depot ():
     propose_depot ()
     montant_depot = float(input("Enter the amount to deposit: "))
-    print(message_depot_verif) 
+    print(f"Etes-vous sur de déposer {montant_depot}€ dans votre compte ?") 
     while rep_is_yes :
         if montant_depot > 0:
             add_amount_to_account
@@ -71,7 +58,20 @@ def fonctionnement_depot ():
     return return_to_accueil
     
 
+# entrer dans le transfert 
+# sélectionner le client à qui envoyer l'argent
+# sélectionner le montant à envoyer
+# afficher le message de verification de notre action
+# retirer la somme du compte du premier client
+# ajouter la meme somme au deuxieme client
+# noter la date du transfert et les détails dans l'historique
 
+
+transfert_message_welcome = "Bienvenue dans votre page de transfert !"
+message_to_ask_the_amount_for_a_transfert = "Veuillez saisir le montant à transférer : "
+message_to_reask_the_amount_for_a_transfert = "Veuillez ressaisir s'il vous plaît le montant à transférer : "
+message_to_ask_the_amount_for_a_withdrawal = "Veuillez saisir le montant à retirer : "
+message_to_reask_the_amount_for_a_withdrawal = "Veuillez ressaisir s'il vous plaît le montant à retirer : "
 
 code_secret = "1234"
 solde_compte = 750.0
@@ -79,7 +79,7 @@ solde_destinataire = 150.0
 
 
 def authentification():
-    "Vérifie le code PIN de l'utilisateur."
+    #Vérifie le code PIN de l'utilisateur.
     essais = 3
     while essais > 0:
         code = input("Veuillez entrer le code PIN de votre compte bancaire: ")
@@ -118,10 +118,10 @@ def transfert(solde, solde_dest):
     return solde, solde_dest
 
 
-print("DAB - Vérification du code PIN")
+print("Vérification du code PIN secret de l'utilisateur...")
 if authentification():
     solde_compte, solde_destinataire = transfert(solde_compte, solde_destinataire)
-
+   
 
 
 
