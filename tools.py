@@ -1,28 +1,70 @@
 
 import json
 
-# transfert :
-
 # entrer dans le transfert 
 # sélectionner le client à qui envoyer l'argent
 # sélectionner le montant à envoyer
 # afficher le message de verification de notre action
 # retirer la somme du compte du premier client
 # ajouter la meme somme au deuxieme client
-
-def transfert():
-    print("Bienvenue dans votre page de transfert !")
-    destinataire = input("Entrez l'ID du destinataire : ")
-    montant_str = input("Entrez le montant à transférer : ")
+# noter la date du transfert et les détails dans l'historique
 
 
-montant = float(montant_str)
-if montant <= 0:
-    print("Le montant doit être supérieur à 0.")
-else:
-    print(f"Le transfert de {montant:.2f} vers le compte de {destinataire} a été effectué avec succès !")
-print("Retour vers le menu principal...")
-    
+transfert_message_welcome = "Bienvenue dans votre page de transfert !"
+message_to_ask_the_amount_for_a_transfert = "Veuillez saisir le montant à transférer : "
+message_to_reask_the_amount_for_a_transfert = "Veuillez ressaisir s'il vous plaît le montant à transférer : "
+message_to_ask_the_amount_for_a_withdrawal = "Veuillez saisir le montant à retirer : "
+message_to_reask_the_amount_for_a_withdrawal = "Veuillez ressaisir s'il vous plaît le montant à retirer : "
+
+code_secret = "1234"
+solde_compte = 750.0
+solde_destinataire = 150.0
+
+
+def authentification():
+    "Vérifie le code PIN de l'utilisateur."
+    essais = 3
+    while essais > 0:
+        code = input("Veuillez entrer le code PIN de votre compte bancaire: ")
+        if code == code_secret:
+            print("✔️ Authentification réussie.\n")
+            return True
+        else:
+            essais -= 1
+            print("❌ Code incorrect. Il vous reste", essais, "essai(s).\n")
+    print("⛔ Votre carte bancaire est bloquée.")
+    return False
+
+
+def transfert(solde, solde_dest):
+    "Effectue un transfert d'un compte à un autre."
+    print("Bienvenue dans votre page de Transfert")
+    print(f"Votre solde est de  {solde} €")
+
+    try:
+        montant = float(input("Le montant à transférer : "))
+    except ValueError:
+        print("❌ Le montant est invalide.")
+        return solde, solde_dest
+
+    if montant <= 0:
+        print("❌ Le montant doit être strictement positif.")
+    elif montant > solde:
+        print("❌ Vous n'avez pas assez d'argent sur votre compte bancaire pour effectuer ce transfert.")
+    else:
+        solde -= montant
+        solde_dest += montant
+        print(f"✔️ Le transfert de {montant} € a été effectué avec succès !")
+        print(f"Votre nouveau solde est de {solde} €")
+        print(f"Le solde du destinataire est de {solde_dest} €")
+
+    return solde, solde_dest
+
+
+print("DAB - Vérification du code PIN")
+if authentification():
+    solde_compte, solde_destinataire = transfert(solde_compte, solde_destinataire)
+   
 
     #retrait:
 #- choisisser un montant 
