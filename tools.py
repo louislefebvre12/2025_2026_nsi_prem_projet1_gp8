@@ -5,6 +5,8 @@
 #si retrait fait:
 #- retirer le montant au solde + noter la date dans un historique
 
+
+
 #- rentrer un montant 
 #si depot fait: 
 #- ajouter le montant au solde + noter la date dans un historique 
@@ -40,7 +42,7 @@ def fonctionnement_depot ():
         if montant_depot > 0:
             add_amount_to_account
             save_depot_in_historique
-            print (f"Le montant de {montant_depot}€ a été déposé sur le compte.")
+            print (f"Le montant de {montant_depot}€ a été déposé sur le compte".)
             return return_to_accueil
         else :
             print("Veuillez rentrer un montant positif.")
