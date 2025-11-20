@@ -20,7 +20,7 @@ solde_destinataire = 150.0
 
 
 def authentification():
-    "Vérifie le code PIN de l'utilisateur."
+    #Vérifie le code PIN de l'utilisateur.
     essais = 3
     while essais > 0:
         code = input("Veuillez entrer le code PIN de votre compte bancaire: ")
@@ -59,7 +59,7 @@ def transfert(solde, solde_dest):
     return solde, solde_dest
 
 
-print("DAB - Vérification du code PIN")
+print("Vérification du code PIN secret de l'utilisateur...")
 if authentification():
     solde_compte, solde_destinataire = transfert(solde_compte, solde_destinataire)
    
