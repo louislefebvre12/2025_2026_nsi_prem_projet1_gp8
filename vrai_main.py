@@ -34,7 +34,7 @@ def run_atm():
             elif choice == '2':
                 fonctionnement_depot()
             elif choice == '3':
-                withdraw_money()
+                retrait()
             elif choice == '4':
                 print("Merci. Aurevoir")
                 break
