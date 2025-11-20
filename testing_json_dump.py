@@ -1,10 +1,9 @@
 import json
 
 clients = { \
-    "1934" : { \
-        "nom": "Jacquesson", \
-        "prenom": "Michel", \
-        "solde": 4500, \
+    "a.jaouengarcia" : { \
+        "pin" : 1234, \
+        "solde": 6967, \
         "depots": {  
             "2025-01-01" : 2000, \
             "2025-01-31" : 3020, \
@@ -20,9 +19,8 @@ clients = { \
             "2025-09-01" : 1234
         }
     },
-    "2548": {
-        "nom": "Bidant", \
-        "prenom": "Joe", \
+    "l.lefebvre": { \
+        "pin" : 90210, \
         "solde": 3200, \
         "depots": { \
             "2025-01-01" : 2000, \
