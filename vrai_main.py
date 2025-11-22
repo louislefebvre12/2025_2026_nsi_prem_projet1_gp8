@@ -1,8 +1,6 @@
 
 import sys
-import os
 
-sys.path.append(os.path.join(os.getcwd(), "user_actions"))
 
 from login import login_user
 from add_money import deposit_money
