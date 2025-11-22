@@ -1,44 +1,75 @@
 
-import json
-from data import *
-from tools import *
-clients = get_clients_base ()
+import sys
+import os
 
-def ask_for_client_id (message):
-    client_id = input (message)
-    return client_id
+sys.path.append(os.path.join(os.getcwd(), "user_actions"))
 
-def client_is_valid (client_id):
-    print ("Liste des clés : ", list (clients.keys ()))
-    return client_id in list (clients.keys ())
+from login import login_user
+from add_money import deposit_money
+from pull_money import withdraw_money
+from view_sold import show_balance
+from send_money import transfer_money
+from settings import account_settings
+from create_acount import register_user
 
-def client_is_not_valid (client_id):
-    return not (client_is_valid (client_id))
 
-def home_menu():
-    client_id = ask_and_validate_client_id ()
-    print("\nWelcome to the ATM")
-    print("1. Check Balance")
-    print("2. Deposit Money")
-    print("3. Withdraw Money")
-    print("4. Exit")
-    choice = input("Please select an option (1-4): ")
-    return choice
+def main_menu():
+    print("=== MENU PRINCIPAL ===")
+    print("1 - Se connecter")
+    print("2 - Créer un compte")
+    print("q - Quitter")
 
-def run_atm():
-    
-        while True:
-            choice = home_menu()
-            if choice == '1':
-                check_balance()
-            elif choice == '2':
-                fonctionnement_depot()
-            elif choice == '3':
-                retrait()
-            elif choice == '4':
-                print("Merci. Aurevoir")
-                break
-            else:
-                print("Erreur. Veuillez rentrer à nouveau votre choix (1-4).")
+    choix = input("Choix : ").strip()
+
+    if choix == "1":
+        user = login_user()
+    elif choix == "2":
+        user = register_user()
+    elif choix == "q":
+        print("Au revoir !")
+        exit()
+    else:
+        print("Option invalide.")
+        exit()
+
+    user_menu(user)
+
+
+def user_menu(user):
+    print(f"\nConnexion réussie. Bienvenue {user['name']} !\n")
+
+    while True:
+        print("=== ACTIONS DISPONIBLES ===")
+        print("1 - Voir le solde")
+        print("2 - Retirer de l'argent")
+        print("3 - Déposer de l'argent")
+        print("4 - Envoyer à un autre utilisateur")
+        print("5 - Paramètres du compte")
+        print("q - Déconnexion")
+
+        action = input("Votre choix : ").strip()
+
+        if action == "1":
+            show_balance(user)
+
+        elif action == "2":
+            withdraw_money(user)
+
+        elif action == "3":
+            deposit_money(user)
+
+        elif action == "4":
+            transfer_money(user)
+
+        elif action == "5":
+            account_settings(user)
+
+        elif action == "q":
+            print("Déconnexion effectuée.")
+            exit()
+
         else:
-            print("Erreur. Essayez à nouveau.")
+            print("Choix invalide.")
+
+
+main_menu()
