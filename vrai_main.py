@@ -1,73 +1,45 @@
+import json
+import os
 
-import sys
+def charger_clients():
+    if not os.path.exists("clients.json") or os.path.getsize("clients.json") == 0:
+        print("Fichier clients.json introuvable ou vide → création du fichier par défaut.")
+        clients = {
+            "jaouengarcia": {"pin": "1234", "solde": 1500},
+            "lefebvre": {"pin": "90210", "solde": 800},
+            "kaltrachian": {"pin": "9999", "solde": 2500},
+            "viala":{"pin": "0000", "solde": 2.5}
+        }
+        with open("clients.json", "w") as f:
+            json.dump(clients, f, indent=4)
+        return clients
 
+    with open("clients.json", "r") as f:
+        return json.load(f)
 
-from login import login_user
-from add_money import deposit_money
-from pull_money import withdraw_money
-from view_sold import show_balance
-from send_money import transfer_money
-from settings import account_settings
-from create_acount import register_user
+def sauvegarder_clients(clients):
+    with open("clients.json", "w") as f:
+        json.dump(clients, f, indent=4)
 
+def connexion(clients):
+    print("\n=== Connexion au DAB ===")
+    pseudo = input("Entrez votre pseudo : ")
+    pin = input("Entrez votre code PIN : ")
 
-def main_menu():
-    print("=== MENU PRINCIPAL ===")
-    print("1 - Se connecter")
-    print("2 - Créer un compte")
-    print("q - Quitter")
-
-    choix = input("Choix : ").strip()
-
-    if choix == "1":
-        user = login_user()
-    elif choix == "2":
-        user = register_user()
-    elif choix == "q":
-        print("Au revoir !")
-        exit()
+    if pseudo in clients and clients[pseudo]["pin"] == pin:
+        print("Connexion réussie !\n")
+        return pseudo
     else:
-        print("Option invalide.")
-        exit()
+        print("Erreur : pseudo ou PIN incorrect.\n")
+        return None
 
-    user_menu(user)
-
-
-def user_menu(user):
-    print(f"\nConnexion réussie. Bienvenue {user['name']} !\n")
-
-    while True:
-        print("=== ACTIONS DISPONIBLES ===")
-        print("1 - Voir le solde")
-        print("2 - Retirer de l'argent")
-        print("3 - Déposer de l'argent")
-        print("4 - Envoyer à un autre utilisateur")
-        print("5 - Paramètres du compte")
-        print("q - Déconnexion")
-
-        action = input("Votre choix : ").strip()
-
-        if action == "1":
-            show_balance(user)
-
-        elif action == "2":
-            withdraw_money(user)
-
-        elif action == "3":
-            deposit_money(user)
-
-        elif action == "4":
-            transfer_money(user)
-
-        elif action == "5":
-            account_settings(user)
-
-        elif action == "q":
-            print("Déconnexion effectuée.")
-            exit()
-
-        else:
-            print("Choix invalide.")
+def accueil():
+    print("\n=== MENU PRINCIPAL ===")
+    print("1 - Retrait")
+    print("2 - Voir le solde")
+    print("3 - Dépôt")
+    print("4 - Transfert")
+    print("5 - Quitter")
+    return input("Choisissez une option : ")
 
 
-main_menu()

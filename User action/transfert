@@ -1,68 +1,22 @@
+def transfert(clients, pseudo):
+    destinataire = input("Pseudo du destinataire : ")
 
-# entrer dans le transfert 
-# sélectionner le client à qui envoyer l'argent
-# sélectionner le montant à envoyer
-# afficher le message de verification de notre action
-# retirer la somme du compte du premier client
-# ajouter la meme somme au deuxieme client
-# noter la date du transfert et les détails dans l'historique
+    if destinataire not in clients:
+        print("Ce destinataire n'existe pas.")
+        return
 
-
-transfert_message_welcome = "Bienvenue dans votre page de transfert !"
-message_to_ask_the_amount_for_a_transfert = "Veuillez saisir le montant à transférer : "
-message_to_reask_the_amount_for_a_transfert = "Veuillez ressaisir s'il vous plaît le montant à transférer : "
-message_to_ask_the_amount_for_a_withdrawal = "Veuillez saisir le montant à retirer : "
-message_to_reask_the_amount_for_a_withdrawal = "Veuillez ressaisir s'il vous plaît le montant à retirer : "
-
-
-
-
-def authentification(id):
-    #Vérifie le code PIN de l'utilisateur.
-    PIN_actuel = clients [id]["pin"]
-    essais = 3
-    while essais > 0:
-        code = input("Veuillez entrer le code PIN de votre compte bancaire: ")
-        if code == code_secret:
-            print("✔️ Authentification réussie.\n")
-            return True
-        else:
-            essais -= 1
-            print("❌ Code incorrect. Il vous reste", essais, "essai(s).\n")
-    print("⛔ Votre carte bancaire est bloquée.")
-    return False
-
-
-def transfert(solde, solde_dest):
-    "Effectue un transfert d'un compte à un autre."
-    print("Bienvenue dans votre page de Transfert")
-    print(f"Votre solde est de  {solde} €")
-
-    try:
-        montant = float(input("Le montant à transférer : "))
-    except ValueError:
-        print("❌ Le montant est invalide.")
-        return solde, solde_dest
+    montant = float(input("Montant du transfert : "))
 
     if montant <= 0:
-        print("❌ Le montant doit être strictement positif.")
-    elif montant > solde:
-        print("❌ Vous n'avez pas assez d'argent sur votre compte bancaire pour effectuer ce transfert.")
-    else:
-        solde -= montant
-        solde_dest += montant
-        print(f"✔️ Le transfert de {montant} € a été effectué avec succès !")
-        print(f"Votre nouveau solde est de {solde} €")
-        print(f"Le solde du destinataire est de {solde_dest} €")
+        print("Montant invalide.")
+        return
 
-    return solde, solde_dest
+    if montant > clients[pseudo]["solde"]:
+        print("Solde insuffisant.")
+        return
 
-def ask_id_user ():
-    id = input (message_for_asking_id_user)
-    return id
+    clients[pseudo]["solde"] -= montant
+    clients[destinataire]["solde"] += montant
 
-print("Vérification du code PIN secret de l'utilisateur...")
-id = ask_id_user ()
-if authentification(id):
-    solde_compte, solde_destinataire = transfert(solde_compte, solde_destinataire)
-   
+    print(f"Transfert réussi ! Nouveau solde : {clients[pseudo]['solde']} €")
+
