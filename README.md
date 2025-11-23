@@ -5,11 +5,3 @@ LOUIS LEFEBVRE
 
 # 2025_2026_nsi_prem_projet1_gp8
 
-
-
-
-
-# DAB 
-
-
-

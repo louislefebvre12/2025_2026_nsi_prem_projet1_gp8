@@ -1,4 +1,5 @@
-def transfert(clients, pseudo):
+
+def transfert_somme(clients, pseudo):
     destinataire = input("Pseudo du destinataire : ")
 
     if destinataire not in clients:
@@ -19,4 +20,3 @@ def transfert(clients, pseudo):
     clients[destinataire]["solde"] += montant
 
     print(f"Transfert réussi ! Nouveau solde : {clients[pseudo]['solde']} €")
-
