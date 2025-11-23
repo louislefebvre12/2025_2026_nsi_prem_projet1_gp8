@@ -3,18 +3,21 @@ def depot_somme(clients, pseudo):
     print("💸 DEPÔT D'ARGENT 💸".center(40))
     print("💰".center(40, "═"))
 
-    try:
-        montant = float(input("💵 Entrez le montant à déposer : "))
-    except ValueError:
-        print("⚠️  Montant invalide ! Veuillez entrer un nombre.")
+    montant = input("💵 Montant à déposer : ")
+
+    # Vérifie que le montant est bien un nombre
+    if not montant.replace(".", "", 1).isdigit():
+        print("⚠️ Tu dois entrer un nombre.")
         return
 
+    montant = float(montant)
+
     if montant <= 0:
-        print("⚠️  Montant invalide. Le dépôt doit être supérieur à 0.")
+        print("⚠️ Le montant doit être plus grand que 0.")
         return
 
     clients[pseudo]["solde"] += montant
 
-    print("\n✅ Dépôt effectué avec succès !")
+    print("\n✅ Dépôt réussi !")
     print(f"💳 Nouveau solde de {pseudo} : {clients[pseudo]['solde']:.2f} €")
     print("✨" * 20 + "\n")

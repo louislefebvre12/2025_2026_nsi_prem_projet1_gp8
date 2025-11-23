@@ -16,16 +16,21 @@ def sauvegarder_clients(clients):
         json.dump(clients, f, indent=4)
 
 def connexion(clients):
-    print("=== Connexion au DAB ===")
-    pseudo = input("Entrez votre pseudo : ")
-    pin = input("Entrez votre code PIN : ")
+    print("\n" + "🔐".center(50, "═"))
+    print("🔑 CONNEXION AU DAB 🔑".center(50))
+    print("🔐".center(50, "═"))
+
+    pseudo = input("👤 Entrez votre pseudo : ")
+    pin = input("🔢 Entrez votre code PIN : ")
 
     if pseudo in clients and clients[pseudo]["pin"] == pin:
-        print("Connexion réussie !\n")
+        print("\n✅ Connexion réussie ! Bienvenue,", pseudo)
+        print("✨" * 25 + "\n")
         return pseudo
     else:
-        print("Erreur : pseudo ou PIN incorrect.\n")
+        print("\n❌ Erreur : pseudo ou PIN incorrect.\n")
         return None
+
 
 def accueil():
     print("\n" + "🏦".center(50, "═"))
