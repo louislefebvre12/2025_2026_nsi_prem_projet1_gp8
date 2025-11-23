@@ -51,13 +51,13 @@ def main():
         choix = accueil()
 
         if choix == "1":
-            retrait(clients, utilisateur)
+            retrait_somme(clients, utilisateur)
         elif choix == "2":
             voir_solde(clients, utilisateur)
         elif choix == "3":
-            depot(clients, utilisateur)
+            depot_somme(clients, utilisateur)
         elif choix == "4":
-            transfert(clients, utilisateur)
+            transfert_somme(clients, utilisateur)
         elif choix == "5":
             sauvegarder_clients(clients)
             print("Merci d'avoir utilisé le DAB.")
