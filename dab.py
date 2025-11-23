@@ -28,13 +28,19 @@ def connexion(clients):
         return None
 
 def accueil():
-    print("\n=== MENU PRINCIPAL ===")
-    print("1 - Retrait")
-    print("2 - Voir le solde")
-    print("3 - Dépôt")
-    print("4 - Transfert")
-    print("5 - Quitter")
-    return input("Choisissez une option : ")
+    print("\n" + "🏦".center(50, "═"))
+    print("💻 DISTRIBUTEUR AUTOMATIQUE DE BILLETS 💻".center(50))
+    print("🏦".center(50, "═"))
+    print("1️⃣  Retrait")
+    print("2️⃣  Voir le solde")
+    print("3️⃣  Dépôt")
+    print("4️⃣  Transfert")
+    print("5️⃣  Quitter")
+    print("✨" * 25)
+    
+    choix = input("➡️  Choisissez une option : ")
+    return choix
+
 
 
 
