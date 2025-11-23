@@ -1,0 +1,34 @@
+L'endroit pour communiquer les frr:
+
+
+on arrive : afficher se connecter ou créer un compte
+
+si créer : nom? et prénom? et mdp?
+aller a se connecter 
+
+si se connecter: nom? et prénom? et mdp?
+si non valide revenir a se connecter + message probleme
+
+si valide: afficher solde + retrait? + depot? + transfert?
+
+
+retrait:
+- choisir un montant 
+si retrait fait:
+- retirer le montant au solde + noter la date dans un historique 
+
+
+depot:
+- rentrer un montant 
+si depot fait: 
+- ajouter le montant au solde + noter la date dans un historique 
+
+
+transfert:
+- rentrer montant + sélectionner le client 
+retirer le montant au solde du client emetteur + ajouter le meme montant au solde du client receveur + noter la date dans un historique 
+
+
+juste avant déconnexion mettre a jour le compte 
+
+revenir a se connecter ou créer un compte 
