@@ -25,7 +25,7 @@ def connexion(clients):
 
     if pseudo in clients and clients[pseudo]["pin"] == pin:
         print("\n✅ Connexion réussie ! Bienvenue,", pseudo)
-        print("✨" * 25 + "\n")
+        print("♥" * 50 + "\n")
         return pseudo
     else:
         print("\n❌ Erreur : pseudo ou PIN incorrect.\n")
@@ -33,15 +33,15 @@ def connexion(clients):
 
 
 def accueil():
-    print("\n" + "🏦".center(50, "═"))
-    print("💻 DISTRIBUTEUR AUTOMATIQUE DE BILLETS 💻".center(50))
-    print("🏦".center(50, "═"))
+    print("\n" + "🏦".center(69, "═"))
+    print("💸 DISTRIBUTEUR AUTOMATIQUE DE BILLETS (ALEX, LOUIS, AXEL, BOGDAN) 💸".center(50))
+    print("🏦".center(68, "═"))
     print("1️⃣  Retrait")
     print("2️⃣  Voir le solde")
     print("3️⃣  Dépôt")
     print("4️⃣  Transfert")
     print("5️⃣  Quitter")
-    print("✨" * 25)
+    print("♥" * 50)
     
     choix = input("➡️  Choisissez une option : ")
     return choix

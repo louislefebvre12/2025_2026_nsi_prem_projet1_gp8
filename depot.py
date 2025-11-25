@@ -20,4 +20,4 @@ def depot_somme(clients, pseudo):
 
     print("\n✅ Dépôt réussi !")
     print(f"💳 Nouveau solde de {pseudo} : {clients[pseudo]['solde']:.2f} €")
-    print("✨" * 20 + "\n")
+    print("♣" * 20 + "\n")
